@@ -1,0 +1,385 @@
+{
+	"id": "8c23f72d-d649-4cb8-8cd1-ac8aa2e3b21d",
+	"name": "Api Testing - Spotify",
+	"timestamp": "2024-06-23T10:01:38.851Z",
+	"collection_id": "31493134-d316026f-371c-4c70-b618-ed3c2fd06afd",
+	"folder_id": 0,
+	"environment_id": "31493134-9e9f9560-dbd7-4d2b-8408-174b6e3c8b67",
+	"totalPass": 19,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-06-23T10:01:35.182Z",
+	"totalFail": 5,
+	"results": [
+		{
+			"id": "1fefd3ec-079d-4cad-b26f-ec9bebf86261",
+			"name": "Generate Token",
+			"url": "https://accounts.spotify.com/api/token",
+			"time": 48,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				48
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c20319d7-d126-40c5-8339-fcffea6add1a",
+			"name": "Generate code",
+			"url": "https://accounts.spotify.com/authorize?client_id=302fa0c6c00c481caa7099ebfabe3969&response_type=code&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback&scope=ugc-image-upload user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read user-read-email user-read-private",
+			"time": 68,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				68
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eb6d24ec-f7da-4e19-96bf-ecbde0c00dbf",
+			"name": "Get Album",
+			"url": "https://api.spotify.com/v1/albums/1aGapZGHBovnmhwqVNI6JZ",
+			"time": 192,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Successful POST request": true,
+				"Response time is less than 200ms": true,
+				"Status code name has string": true,
+				"Verify that response has least on image": true,
+				"Verify that response has an ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that response has least on image": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that response has an ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				192
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Successful POST request": true,
+					"Response time is less than 200ms": true,
+					"Status code name has string": true,
+					"Verify that response has least on image": true,
+					"Verify that response has an ID": true
+				}
+			]
+		},
+		{
+			"id": "739c7a02-16ff-49c8-bd55-feb1306626a2",
+			"name": "Get Playlist",
+			"url": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+			"time": 559,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verify that the status message is Created": false,
+				"Response time is less than 600ms": true,
+				"Checkk playlist name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the status message is Created": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checkk playlist name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				559
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verify that the status message is Created": false,
+					"Response time is less than 600ms": true,
+					"Checkk playlist name": true
+				}
+			]
+		},
+		{
+			"id": "8ad45ca0-47cd-4f40-851d-bd0188d4adaf",
+			"name": "GET Category's Playlists",
+			"url": "https://api.spotify.com/v1/browse/categories/pop/playlists",
+			"time": 175,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verify category name is pop": false,
+				"Verify that category_pop exist and has 60 characters": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify category name is pop": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verify that category_pop exist and has 60 characters": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				175
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verify category name is pop": false,
+					"Verify that category_pop exist and has 60 characters": false
+				}
+			]
+		},
+		{
+			"id": "7ed51887-c12a-4370-9300-6178ea49f4c0",
+			"name": "Change Playlist Details",
+			"url": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+			"time": 146,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				146
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "058f5847-9dc2-4ca7-a89e-e2eec662bbf9",
+			"name": "Update Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+			"time": 110,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Verify that snapshot_id exist and has 60 characters": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that snapshot_id exist and has 60 characters": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				110
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Verify that snapshot_id exist and has 60 characters": false
+				}
+			]
+		},
+		{
+			"id": "e3d03ac4-afc1-42e6-85a2-dd9fb54bad43",
+			"name": "Get Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+			"time": 503,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verify that the status message is OK": true,
+				"Response time is less than 600ms": true,
+				"Checkk playlist type": true,
+				"Checkk playlist name": true,
+				"Checkk playlist owner": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the status message is OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checkk playlist type": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checkk playlist name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checkk playlist owner": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				503
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verify that the status message is OK": true,
+					"Response time is less than 600ms": true,
+					"Checkk playlist type": true,
+					"Checkk playlist name": true,
+					"Checkk playlist owner": true
+				}
+			]
+		},
+		{
+			"id": "c12ba276-5ee5-452a-a17c-663b2805cdda",
+			"name": "Remove Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/{playlist_id}/0ftNNfxBAJJeN0E7iq27fZ",
+			"time": 90,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				90
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1891,
+	"collection": {
+		"requests": [
+			{
+				"id": "1fefd3ec-079d-4cad-b26f-ec9bebf86261",
+				"method": "POST"
+			},
+			{
+				"id": "c20319d7-d126-40c5-8339-fcffea6add1a",
+				"method": "GET"
+			},
+			{
+				"id": "eb6d24ec-f7da-4e19-96bf-ecbde0c00dbf",
+				"method": "GET"
+			},
+			{
+				"id": "739c7a02-16ff-49c8-bd55-feb1306626a2",
+				"method": "GET"
+			},
+			{
+				"id": "8ad45ca0-47cd-4f40-851d-bd0188d4adaf",
+				"method": "GET"
+			},
+			{
+				"id": "7ed51887-c12a-4370-9300-6178ea49f4c0",
+				"method": "PUT"
+			},
+			{
+				"id": "058f5847-9dc2-4ca7-a89e-e2eec662bbf9",
+				"method": "PUT"
+			},
+			{
+				"id": "e3d03ac4-afc1-42e6-85a2-dd9fb54bad43",
+				"method": "GET"
+			},
+			{
+				"id": "c12ba276-5ee5-452a-a17c-663b2805cdda",
+				"method": "DELETE"
+			}
+		]
+	}
+}

@@ -1,0 +1,1094 @@
+{
+	"info": {
+		"_postman_id": "d316026f-371c-4c70-b618-ed3c2fd06afd",
+		"name": "Api Testing - Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31493134"
+	},
+	"item": [
+		{
+			"name": "Generate Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/browser-callback",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "302fa0c6c00c481caa7099ebfabe3969",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "https://oauth.pstmn.io/v1/browser-callback?code=AQC5b39UdIeWmRiDld7mSgFdiEql8Omhq0nB6QsaO2WFPqqY1QH_ocT16RbeuaI3pB7NUsd5oJpnR0rszaRLVe_hOQlE1V2gxWvhfCLztB0z8BFK1Mb32Et94Mb_YqOWf1TwuzfWGovXaOUqvUGJWXX4doo4p_BmyJFcfKNFiEBjMdLDbzySLCTSJ3kR4G6o2_HkuHZQU2MUQn1xt-oI3B_-9ebZKEAUIor-HnPkz4A3tPggT2wjnmA703-SbrlpJhkXisAd7CXqYcz8NkC2A0qGXe_XrUOsl2mwYR9zMlE5xWYGicF6ZQByOwzoO3WFlb7vvYsqTv4dtFvSRHFGeQQAtBBHMe8i8c97kqTORK0Os7qZaU71wlZHTdU-sxQbKS4_ZgY-LDoRKpU2p6eao0nh5pDeV8C3aPRXx3JybO8x4e-T80FE87p7TrBJrPwxHE6jCJBwO9P62oBneSL4iHeDxD2Rruz91zkD51c94Em--FAVDi1qCk4dnvCBUtXPLqF4XH7fc1D_014iYDwBnuPq9Ahn5Gf1qiQvQb9nSo3-ZUdnaNP5qJjAdmwPx8H4t4c98a200L9D4YPczyPGck6VNYPfxbMQT0HnARLHJ-QOi6G3Zt-RQtFjwuL6RnNFfn9qTDzzry-fWoyhcTYSMenCHVdUy3Z_TvMhTNiJHiJWvLgvJaTRsF7kXqc6VH66n_UYVVDwcG3jrdzPXkponVRK3DP7G4gDuC-39_MROOQ",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate code",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/authorize?client_id=302fa0c6c00c481caa7099ebfabe3969&response_type=code&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback&scope=ugc-image-upload user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read user-read-email user-read-private",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "302fa0c6c00c481caa7099ebfabe3969"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback"
+						},
+						{
+							"key": "scope",
+							"value": "ugc-image-upload user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read user-read-email user-read-private"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that response has least on image\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.images).to.be.an(\"array\").that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify that response has an ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.equals(\"1aGapZGHBovnmhwqVNI6JZ\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "302fa0c6c00c481caa7099ebfabe3969",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "BQBNqP_bscDstB3QmmAtd-vC-eHvYh6i3n2bDQSjAKfXO4uVPwyx_JpMbIcxYt0RKjD6VS8_9l6BYGX4ru_A_cAn00i2bvv4c9SzD_rp9mfz-KMBKr8W3K8r8LseZ6wB3e9dplhgSiEk1BAglOt_uBo5zpykvObf5cqZqXtTDwVZM-6Bbl9vSVqLJ-ecle7ExqvIgg",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQDt6g9H0W1RpG6Tnw5gmZam3vwMZDw_h5xL3-uynsCJ30dVK_8n39zDoHcYleqic-PVU47UMbPgHubFlVisLORpyXyykJ8AhLMTD0uw9ekvy5R7ZdG4qi_Caxm-OunZYnU",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-13T09:30:04.495Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/browser-callback",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/albums/1aGapZGHBovnmhwqVNI6JZ",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"albums",
+						"1aGapZGHBovnmhwqVNI6JZ"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that the status message is Created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checkk playlist name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Playlist Deea\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "BQB9XE5sGfTdOudYvWU_nXgCKuHUQqvfienBUZgOYf0mb9s21A8v93cTlj9PyWLoZoArK-rnGxQDmVtoWHK9uW9i3gIJ_8jcHZ6MFxuNMv8pCSUeHxP37gl72T0-fmQVF4VajQl5fjBzdMednYh--QC6wigQP8rTZNbQcqfDWTD3hLN1_6Yl4rFT6ZkmXwIP0F7Vjw",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQBlv8bil7wYimLMUxvDavNH2dt2oc8wbVmvfsXAs_bGthMf8Bld31Qt7DYS7XT5cGFnwIqkAL9NHWq_WDYQj5RWXgLlHG0zTlD1v2MGmrSKEj9c_EiFbp3v5sOI_roSM2I",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-13T10:33:36.121Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "clientSecret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1qISrmv0EN157fcAD0NOaE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Category's Playlists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify category name is pop\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"All things Billie!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that category_pop exist and has 60 characters\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var categoryID = pm.response.category_pop;\r",
+							"    pm.expect(categoryID).to.exist;\r",
+							"    pm.expect(categoryID).to.have.length(60);\r",
+							"}); \r",
+							"    "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "BQClSdml46Vv21nWFoUkkmFJVlJGBmy-Cv8unK6yiFH1RtxnpGzwJv5wG5ozcRPAp_Y8lmHzRrYtVpfW176CdofX-z88c7WXDNWF6nNdhE8xJYFUUT1VcYeZ43qKtYxgl9N5tzjEyYrDBKOqkNGOD0ydayhXs7IkCx4CaIqQEdKgNJ_ExbEAZv0xqN47v4PV1MOf2A",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQDXontIwEPFi-bi_WA8tYkGguXjakaClOOsU7e3hEFOdI8YSgZ9PHmU1ykb3CnQ055PcX3r5YA4Ns5EVL_5TGS-ajN0dzWF2bDygL87kOZhJ3o6IXosqwz9iF1K-5xcUmo",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-13T10:36:10.417Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "clientSecret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/browse/categories/pop/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"browse",
+						"categories",
+						"pop",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Playlist Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "BQAUXBsXY5E4DoJFPGuX3dJb_2uVRYDst_FI_3IpAw27fIireoQK2i4KJwkVtfHlS5nMevnqOInjTtXFiSBbxJImjzz2nMnEHbTNaRx6refVH68Cp3wNlBd2NsZYrBOU59wU6FOz_RLXLEWjzhDxtgeOoF_yZhifYN4jdP5IdnOMmClR9jsunwAk-yMVEU6_o0PNTQ",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQCFMr_oK_2BxDnx0lGtxOJJ6lqqrwrSzIsdQLBSszuwnsa7-VfaQjqYQv6pcFHMHnJT91XbmecRlTMBl18PP94yQL7J1Q-l_v45W4wbpAI2wkUFGLNVgKUz43wCtfVbu1U",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-11T10:21:12.422Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "token_id",
+							"value": "{{token_id}}",
+							"type": "string"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Playlist Deea\",\r\n    \"description\": \"Updated playlist description\",\r\n    \"public\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1qISrmv0EN157fcAD0NOaE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that snapshot_id exist and has 60 characters\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var snapshotID = pm.response.snapshot_id;\r",
+							"    pm.expect(snapshotID).to.exist;\r",
+							"    pm.expect(snapshotID).to.have.length(60);\r",
+							"}); \r",
+							"    "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "BQBXFQ7b54nW8SLrocjS6sOrlWtJKlzmAt1HrxB3G98j5o2HE3IXGFpPzN1cCgg6IvLVpVQV3ISCYAc5v-su4kPxX0vWqWkpeZN8s4gDVx0in6XskY0fMzfIbZDidK0JyfgVAuYBgs0YQfIZn-sI0vYQoC8eQFXJWiHOE4DIaX5BWG9TKDP7ZQ4LxtZ49K8LIGie8Q",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQDBe-32wVFZhVulU2IX7dyD9QVUDgRlrDvKTjYKstoffqrDAMBZo38CAJHajG79nTSTBqNST_wi98WhYdCPtxWreQOyKwPLv7TKhmALJ5AIfQLfYHjzquhPKmOmFqORrz4",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-11T10:21:52.662Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "token_id",
+							"value": "{{token_id}}",
+							"type": "string"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"range_start\": 1,\r\n    \"insert_before\": 2,\r\n    \"range_length\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1qISrmv0EN157fcAD0NOaE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that the status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checkk playlist type\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.public).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checkk playlist name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Playlist Deea\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checkk playlist owner\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.owner.display_name).to.eql(\"Deea Andreea\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{accessToken}}",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "302fa0c6c00c481caa7099ebfabe3969",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQAYq1wWNWq98hlGRgH_95m0NxIjLhiH_a7JBqMiMRzeNiQEt1Bv0CR6Sfa_lZc98aT8zX7p_2GoBlVr5d8nW5PbrvyprQe-o5W_K1aJrHjg7cvUCiAYA9jhr7xJz2_w5NE",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-13T10:25:12.108Z",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1qISrmv0EN157fcAD0NOaE",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1qISrmv0EN157fcAD0NOaE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "BQA8ksKhbucihttMSEF-ADoxtiGFJwqYVl8lyn4c_uTQEUS6rs1RyGGsxTNjLAumv_nti-b1sE6FLpTR9jigcwEHtORBWTDe-feWX6X9kzT4wdUa2dDzX72hZucNtBbWErQiOrHZotHVLdZUBSsgyhHEpaFPKZqwap5NVmSJMCNE17wl9F4W6PKyJEVUEltgyfNkcw",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "expires_in",
+							"value": 3600,
+							"type": "number"
+						},
+						{
+							"key": "refresh_token",
+							"value": "AQD5nvLSjV3lgGb6NLgySYpzUzqApawbpLAYGu983eYZDrWfEMmVwTpFR74-2e9gXYoF1HIjYA28s_z6zOS32KwOd31ShCQnqIQ9S8UhSKdtGBYQr-5vN2jk3v7Clr70qE0",
+							"type": "string"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-06-23T09:13:20.123Z",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "clientSecret",
+							"value": "f3be51a3772b4d5f9c1dc36bcf195f7a",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    'playlists': 1qISrmv0EN157fcAD0NOaE\r\n    'playlist_id' : 'Playlist Deea'\r\n    'albun': 5C0YLr4OoRGFDaqdMQmkeH\r\n    'tracks': 0mlAOSILGRys2IbvyOT5VJ\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/{playlist_id}/0ftNNfxBAJJeN0E7iq27fZ",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"{playlist_id}",
+						"0ftNNfxBAJJeN0E7iq27fZ"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "inherit"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "tokenName",
+			"value": "AQC5b39UdIeWmRiDld7mSgFdiEql8Omhq0nB6QsaO2WFPqqY1QH_ocT16RbeuaI3pB7NUsd5oJpnR0rszaRLVe_hOQlE1V2gxWvhfCLztB0z8BFK1Mb32Et94Mb_YqOWf1TwuzfWGovXaOUqvUGJWXX4doo4p_BmyJFcfKNFiEBjMdLDbzySLCTSJ3kR4G6o2_HkuHZQU2MUQn1xt-oI3B_-9ebZKEAUIor-HnPkz4A3tPggT2wjnmA703-SbrlpJhkXisAd7CXqYcz8NkC2A0qGXe_XrUOsl2mwYR9zMlE5xWYGicF6ZQByOwzoO3WFlb7vvYsqTv4dtFvSRHFGeQQAtBBHMe8i8c97kqTORK0Os7qZaU71wlZHTdU-sxQbKS4_ZgY-LDoRKpU2p6eao0nh5pDeV8C3aPRXx3JybO8x4e-T80FE87p7TrBJrPwxHE6jCJBwO9P62oBneSL4iHeDxD2Rruz91zkD51c94Em--FAVDi1qCk4dnvCBUtXPLqF4XH7fc1D_014iYDwBnuPq9Ahn5Gf1qiQvQb9nSo3-ZUdnaNP5qJjAdmwPx8H4t4c98a200L9D4YPczyPGck6VNYPfxbMQT0HnARLHJ-QOi6G3Zt-RQtFjwuL6RnNFfn9qTDzzry-fWoyhcTYSMenCHVdUy3Z_TvMhTNiJHiJWvLgvJaTRsF7kXqc6VH66n_UYVVDwcG3jrdzPXkponVRK3DP7G4gDuC-39_MROOQ"
+		}
+	]
+}
